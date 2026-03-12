@@ -1,9 +1,9 @@
 ---
-name: win-control
+name: windows-control-skill
 description: Control Windows desktop remotely via PowerShell for GUI automation. Use for screenshots, mouse/keyboard control, window management, and application automation from WSL/Linux. Requires PowerShell on Windows with execution policy set to Bypass.
 ---
 
-# Windows Control (win-control)
+# Windows Control Skill (windows-control-skill)
 
 Control Windows desktop remotely through PowerShell for full GUI automation.
 
