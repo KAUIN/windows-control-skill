@@ -9,12 +9,15 @@ Control Windows desktop remotely through PowerShell for full GUI automation.
 
 ## Quick Start
 
+**Note:** The script file is `.txt` format for ClawHub compatibility. 
+**Before use, rename it to `.ps1`:**
 ```bash
-# Copy script to Windows
+# Copy script to Windows and rename to .ps1
 cp ~/.openclaw/skills/win-control/scripts/win_control.txt /mnt/c/temp/
+ren C:\temp\win_control.txt win_control.ps1
 
 # Screenshot
-powershell.exe -ExecutionPolicy Bypass -File C:\temp\win_control.txt screenshot C:\temp\screen.png
+powershell.exe -ExecutionPolicy Bypass -File C:\temp\win_control.ps1 screenshot C:\temp\screen.png
 
 # Click at position (x, y)
 powershell.exe -ExecutionPolicy Bypass -File C:\temp\win_control.txt click 500 300
