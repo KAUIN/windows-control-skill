@@ -9,7 +9,10 @@ from PIL import Image
 import io
 
 class WindowsScreenCapture:
-    def __init__(self, output_dir='/tmp/screen_stream'):
+    def __init__(self, output_dir=None):
+        # Default to Windows temp directory if not specified
+        if output_dir is None:
+            output_dir = os.environ.get('TEMP', '/tmp') + '/screen_stream'
         self.output_dir = output_dir
         os.makedirs(output_dir, exist_ok=True)
         self.frame_count = 0
@@ -32,10 +35,16 @@ $graphics.Dispose()
 $bitmap.Dispose()
 '''
         
-        # Run PowerShell
+        # Run PowerShell (auto-detect WSL or Windows)
+        if os.path.exists('/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe'):
+            # WSL path
+            ps_path = '/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe'
+        else:
+            # Native Windows or other
+            ps_path = 'powershell.exe'
+        
         result = subprocess.run(
-            ['/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe', 
-             '-Command', ps_cmd],
+            [ps_path, '-Command', ps_cmd],
             capture_output=True
         )
         

@@ -105,12 +105,27 @@ print(cap.get_latest_frame())
 
 ## Prerequisites
 
-### Windows
+### Windows (Target Machine)
 - PowerShell (built-in on Windows 7+)
 - Set execution policy: `Set-ExecutionPolicy Bypass -Scope Process`
+- Required for: screenshot, mouse/keyboard control, window management
 
-### WSL/Linux
-- No additional packages needed
+### WSL/Linux (Control Machine)
+- WSL with access to Windows drives (`/mnt/c/`)
+- Or native Windows with Python
+- Python 3.7+ (for realtime_screen.py)
+- Pillow library: `pip install Pillow`
+
+### Setup Steps
+1. Copy `scripts/win_control.ps1` to Windows (e.g., `C:\temp\`)
+2. Set PowerShell execution policy (one-time):
+   ```powershell
+   Set-ExecutionPolicy Bypass -Scope Process
+   ```
+3. Test connection:
+   ```bash
+   powershell.exe -File C:\temp\win_control.ps1 info
+   ```
 
 ## Available Keys
 
