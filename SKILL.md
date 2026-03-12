@@ -7,89 +7,89 @@ description: Control Windows desktop remotely via PowerShell for GUI automation.
 
 Control Windows desktop remotely through PowerShell for full GUI automation.
 
+## File Versions
+
+This skill includes two versions of the PowerShell script:
+
+- **`win_control.ps1`** - PowerShell script (for direct use)
+- **`win_control.txt`** - Text version (for ClawHub compatibility)
+
+**AI Instructions:** When using this skill on Windows, copy the `.txt` file and rename it to `.ps1` before execution.
+
 ## Quick Start
 
-**Note:** The script file is `.txt` format for ClawHub compatibility. 
-**Before use, rename it to `.ps1`:**
 ```bash
-# Copy script to Windows and rename to .ps1
+# Step 1: Copy script to Windows (use .txt version from skill)
 cp ~/.openclaw/skills/win-control/scripts/win_control.txt /mnt/c/temp/
+
+# Step 2: Rename to .ps1 (REQUIRED for PowerShell execution)
 ren C:\temp\win_control.txt win_control.ps1
 
-# Screenshot
+# Step 3: Execute commands
 powershell.exe -ExecutionPolicy Bypass -File C:\temp\win_control.ps1 screenshot C:\temp\screen.png
-
-# Click at position (x, y)
-powershell.exe -ExecutionPolicy Bypass -File C:\temp\win_control.txt click 500 300
-
-# Type text
-powershell.exe -ExecutionPolicy Bypass -File C:\temp\win_control.txt type "Hello World"
-
-# Press key
-powershell.exe -ExecutionPolicy Bypass -File C:\temp\win_control.txt key enter
 ```
 
 ## Commands
 
 ### Screenshot
 ```bash
-powershell.exe -File win_control.txt screenshot C:\temp\screen.png
+powershell.exe -File win_control.ps1 screenshot C:\temp\screen.png
 ```
 
 ### Mouse Control
 ```bash
 # Click (left/right/middle, single/double)
-powershell.exe -File win_control.txt click 500 300
-powershell.exe -File win_control.txt click 500 300 right
-powershell.exe -File win_control.txt click 500 300 left double
+powershell.exe -File win_control.ps1 click 500 300
+powershell.exe -File win_control.ps1 click 500 300 right
+powershell.exe -File win_control.ps1 click 500 300 left double
 
 # Move cursor
-powershell.exe -File win_control.txt move 500 300
+powershell.exe -File win_control.ps1 move 500 300
 
 # Drag
-powershell.exe -File win_control.txt drag 100 100 500 500
+powershell.exe -File win_control.ps1 drag 100 100 500 500
 
 # Scroll (up/down)
-powershell.exe -File win_control.txt scroll down 5
+powershell.exe -File win_control.ps1 scroll down 5
 ```
 
 ### Keyboard Control
 ```bash
 # Type text
-powershell.exe -File win_control.txt type "Hello World"
+powershell.exe -File win_control.ps1 type "Hello World"
 
 # Press special key
-powershell.exe -File win_control.txt key enter
-powershell.exe -File win_control.txt key escape
-powershell.exe -File win_control.txt key tab
+powershell.exe -File win_control.ps1 key enter
+powershell.exe -File win_control.ps1 key escape
+powershell.exe -File win_control.ps1 key tab
 
 # Key combinations
-powershell.exe -File win_control.txt combo "ctrl+c"
-powershell.exe -File win_control.txt combo "alt+tab"
+powershell.exe -File win_control.ps1 combo "ctrl+c"
+powershell.exe -File win_control.ps1 combo "alt+tab"
 ```
 
 ### Window Management
 ```bash
 # List windows
-powershell.exe -File win_control.txt list
+powershell.exe -File win_control.ps1 list
 
 # Activate window
-powershell.exe -File win_control.txt activate "Notepad"
+powershell.exe -File win_control.ps1 activate "Notepad"
 
 # Close window
-powershell.exe -File win_control.txt close "Calculator"
+powershell.exe -File win_control.ps1 close "Calculator"
 
 # Start application
-powershell.exe -File win_control.txt start notepad
+powershell.exe -File win_control.ps1 start notepad
 ```
 
 ### System Info
 ```bash
 # Screen resolution
-powershell.exe -File win_control.txt info
+powershell.exe -File win_control.ps1 info
 
 # Cursor position
-powershell.exe -File win_control.txt getcursor
+powershell.exe -File win_control.ps1 getcursor
 ```
 
 ## Real-time Screen Capture
@@ -121,13 +121,14 @@ print(cap.get_latest_frame())
 
 ### Setup Steps
 1. Copy `scripts/win_control.txt` to Windows (e.g., `C:\temp\`)
-2. Set PowerShell execution policy (one-time):
+2. **Rename to `.ps1`**: `ren C:\temp\win_control.txt win_control.ps1`
+3. Set PowerShell execution policy (one-time):
    ```powershell
    Set-ExecutionPolicy Bypass -Scope Process
    ```
-3. Test connection:
+4. Test connection:
    ```bash
-   powershell.exe -File C:\temp\win_control.txt info
+   powershell.exe -File C:\temp\win_control.ps1 info
    ```
 
 ## Available Keys
