@@ -7,25 +7,13 @@ description: Control Windows desktop remotely via PowerShell for GUI automation.
 
 Control Windows desktop remotely through PowerShell for full GUI automation.
 
-## File Versions
-
-This skill includes two versions of the PowerShell script:
-
-- **`win_control.ps1`** - PowerShell script (for direct use)
-- **`win_control.txt`** - Text version (for ClawHub compatibility)
-
-**AI Instructions:** When using this skill on Windows, copy the `.txt` file and rename it to `.ps1` before execution.
-
 ## Quick Start
 
 ```bash
-# Step 1: Copy script to Windows (use .txt version from skill)
-cp ~/.openclaw/skills/win-control/scripts/win_control.txt /mnt/c/temp/
+# Copy script to Windows
+cp ~/.openclaw/skills/win-control/scripts/win_control.ps1 /mnt/c/temp/
 
-# Step 2: Rename to .ps1 (REQUIRED for PowerShell execution)
-ren C:\temp\win_control.txt win_control.ps1
-
-# Step 3: Execute commands
+# Execute commands
 powershell.exe -ExecutionPolicy Bypass -File C:\temp\win_control.ps1 screenshot C:\temp\screen.png
 ```
 
